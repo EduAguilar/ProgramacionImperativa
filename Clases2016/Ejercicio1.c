@@ -1,3 +1,11 @@
+/*Primer ejercicio clase Programación Imperativa 2016
+ *1)Crear un programa en C, que ingrese cantidades y precios, y luego indique el valor de la factura.
+ *2)Modificar el programa anterior, para que ingreses cantidad, descripción y precios. Luego muestre por pantalla el listado de lo 
+ *cargado y muestre el total.
+ *Autor: Aguilar Eduardo Alfredo
+ *Temas tratados: Funcion 
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 
