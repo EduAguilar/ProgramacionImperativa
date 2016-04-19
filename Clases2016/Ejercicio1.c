@@ -3,7 +3,14 @@
  *2)Modificar el programa anterior, para que ingreses cantidad, descripción y precios. Luego muestre por pantalla el listado de lo 
  *cargado y muestre el total.
  *Autor: Aguilar Eduardo Alfredo
- *Temas tratados: Funcion 
+ *Temas tratados: 
+                Main()
+                printf()
+                scanf()
+                tipos de datos
+                while
+                switch
+                funciones de retorno
  */
 
 #include <stdio.h>
