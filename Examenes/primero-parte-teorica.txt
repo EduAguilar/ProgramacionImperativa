@@ -1,0 +1,35 @@
+Escribir en una hoja en blanco,
+
+Nombre, Apellido, Aguilar Eduardo Alfredo
+Sistemas 2º Año
+Preguntas:
+
+1) Que es git ?
+Git es un controlador de versiones para gestionar el trabajo cooperativo entre programadores.
+
+2) Que es github ? 
+GitHub es un tipo de plataforma social para programadores la cual cuenta con git para 
+gestionar trabajos grupales y ademas tiene mas herramientas para facilitar el trabajo de proyectos
+que difieren por perfiles de usuarios
+
+3) Nombre tipos de datos comunes para el lenguaje C.
+
+Los tipos de datos mas comunes que se utilizan en C son:
+*tipo entero, los cuales son datos numéricos y su sintaxis es--> int variablenumerica = 0;
+Aqui en el ejemplo ademas de definir el tipo de datos enteros, se ha inicializado la variable en 0.
+*tipo float, tambien es un dato numerico que a diferencia del anterior este incluye los numeros con punto
+flotante, es decir aquellos que tienen una parte decimal y una parte entera(numero con coma). Es una dato 
+de mayor tamaño que el int, y su sintaxis es --> float variablenumerica;
+*tipo caracter, es un tipo de datos que almacena variables de solo caracteres.
+Su sintaxis es--> char variablecaracter;
+*tipo cadena, este tipo de datos almacena cadena de caracteres, y es de mayor tamaño que el char.
+su sintaxis es--> String variablecadenacaracteres;
+
+
+4) Escriba su cuenta de github, y el repositorio donde va a subir sus ejercicios para poder ser evaluados.
+
+    a) Muestre un menú con las opciones sumar, restar, multiplicar y dividir, el programa solicitará una opción, luego el ingreso de dos números, y realizará la tarea elegida.
+    Se debe usar una función para mostrar el menú, pedir los datos en el main.
+    También usar funciones para realizar los cálculos. 
+    
+    b) Que pida 10 números por teclado, los almacene en un array y muestre la suma.
