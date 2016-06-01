@@ -19,57 +19,67 @@ int main(){
     int 	cant=0;
     int 	resp,resp1;
     char 	resp2;
-    char	busqxapell[100],busqxnombre[100],busqxdirec[100],busqxtel[50],busqxcel[50];
-    //char 	*punterochar[100];
-    //int 	*punteroint[50];
+    char	busqxapell[50],busqxnombre[50],busqxdirec[100];
+    int		busqxtel[50],busqxcel[50];
+    
 
     
 	struct Contacto contactos[50];
 	
-	do{
-		system("clear");
-		printf("\n¿Cuantos contactos desea agregar?\nPor favor ingrese cantidad: ");
-		scanf("%d",&cant);
-		
-	}while(!cant,getchar()!='\n');
-
-
-	printf("Por favor cargue sus contactos:... \n");
 	
-	for(i=0;i<cant;i++){
-		
-		printf("\nIngrese Apellido: ");
-		fgets(contactos[i].apellido, 50, stdin);// se usa para cargar string con espacios asigna nombre de la variable, longitaud  y forma de ingreso
-		
-		printf("\nIngrese Nombre: ");
-		fgets(contactos[i].nombre, 50, stdin);
-		
-		printf("\nIngrese Dirección: ");
-		fgets(contactos[i].direccion, 100, stdin);
-		
-		do{
-			
-			printf("\nIngrese Teléfono: ");
-		    scanf ("%d",contactos[i].telefono);
-			
-	   	}while(!(contactos[i].telefono),getchar()!='\n');
-	
-		do{
-			printf("\nIngrese Celular: ");
-		    scanf ("%d",contactos[i].celular);
-		    
-	 	}while(!(contactos[i].celular),getchar()!='\n');
-		system("clear");
-	}
-
+	//Menu de Opciones
 	do{
-		printf("\n¿Que desea realizar? Elija entre las siguientes opciones \n1)- Mostrar Todos los Contactos.\t2)- Buscar un Contacto.\n");
+		
+	
+	do{
+		
+		printf("\t\tAgenda de contactos V_1.2\n");
+		printf("\t************************************\n");
+		printf("\n¿Que desea realizar? Elija entre las siguientes opciones\n1)- Cargar Contactos. \t2)- Mostrar Todos los Contactos.\n3)- Buscar un Contacto.\t4)- Salir.\n");
 		scanf("%d",&resp);
 	}while(!resp,getchar()!='\n');
 
 	switch(resp){
 		
 		case 1:
+		
+			//Carga Contactos
+		do{
+			system("clear");
+			printf("\n¿Cuantos contactos desea agregar?\nPor favor ingrese cantidad: ");
+			scanf("%d",&cant);
+		}while(!cant,getchar()!='\n');
+
+
+		printf("Por favor cargue sus contactos:... \n");
+	
+		for(i=0;i<cant;i++){
+			printf("\nIngrese Apellido: ");
+			fgets(contactos[i].apellido, 50, stdin);// se usa para cargar string con espacios asigna nombre de la variable, longitaud  y forma de ingreso
+		
+			printf("\nIngrese Nombre: ");
+			fgets(contactos[i].nombre, 50, stdin);
+		
+			printf("\nIngrese Dirección: ");
+			fgets(contactos[i].direccion, 100, stdin);
+			
+			do{
+				printf("\nIngrese Teléfono: ");
+				scanf("%d",contactos[i].telefono);
+			}while(!(contactos[i].telefono),getchar()!='\n');
+			
+			do{
+				printf("\nIngrese Celular: ");
+				scanf ("%d",contactos[i].celular);	
+			}while(!(contactos[i].celular),getchar()!='\n');
+		    
+		system("clear");
+		}
+		
+		break;
+		
+		
+		case 2:
 			system("clear");
 			printf("Sus contactos que cargo son los siguientes: \n");
 			for(i=0;i<cant;i++){
@@ -83,7 +93,7 @@ int main(){
 			}
 		break;
 		
-		case 2:
+		case 3:
 			do{
 				system("clear");
 				printf("¿Como desea buscar su contacto?\nElija entre las siguientes opciones(numeros)\n");
@@ -98,13 +108,14 @@ int main(){
 				fgets(busqxapell,50,stdin);
 				
 				for(i=0;i<cant;i++){
-					/*
-					do{
-						
-					}while(strcmp(busqxapell,contactos[i]))
-					*/
-					if(strcmp(busqxapell, contactos[i].apellido) == 0){
-					 	printf("Su dato se ha encontrado");
+					if(strcmp(busqxapell,contactos[i].apellido) == 0){
+						printf("\nContacto nº %d: \n",i+1);
+						printf("****************************\n");
+						printf( "Apellido: %s", contactos[i].apellido);
+   						printf( "Nombre: %s", contactos[i].nombre);
+   						printf( "Direccion: %s", contactos[i].direccion);
+   						printf( "Telefono: %d\n", *contactos[i].telefono);
+   						printf( "Celular: %d\n", *contactos[i].celular);
 					} 
 				}
 
@@ -113,33 +124,91 @@ int main(){
 				case 2:
 				printf("Ingrese Nombre a buscar: \n");
 				fgets(busqxnombre,50,stdin);
+			
+				for(i=0;i<cant;i++){
+					if(strcmp(busqxnombre,contactos[i].nombre) == 0){
+						printf("\nContacto nº %d: \n",i+1);
+						printf("****************************\n");
+						printf( "Apellido: %s", contactos[i].apellido);
+   						printf( "Nombre: %s", contactos[i].nombre);
+   						printf( "Direccion: %s", contactos[i].direccion);
+   						printf( "Telefono: %d\n", *contactos[i].telefono);
+   						printf( "Celular: %d\n", *contactos[i].celular);
+					} 
+				}
+				
 				break;
 				
 				case 3:
 				printf("Ingrese Dirección a buscar: \n");
-				fgets(busqxnombre,50,stdin);
+				fgets(busqxdirec,100,stdin);
+
+				for(i=0;i<cant;i++){
+					if(strcmp(busqxdirec,contactos[i].direccion) == 0){
+						printf("\nContacto nº %d: \n",i+1);
+						printf("****************************\n");
+						printf( "Apellido: %s", contactos[i].apellido);
+   						printf( "Nombre: %s", contactos[i].nombre);
+   						printf( "Direccion: %s", contactos[i].direccion);
+   						printf( "Telefono: %d\n", *contactos[i].telefono);
+   						printf( "Celular: %d\n", *contactos[i].celular);
+					} 
+				}				
+				
 				break;
 				
 				case 4:
-				printf("Ingrese Teléfono a buscar: \n");
-				fgets(busqxnombre,50,stdin);
+				do{
+					printf("\nIngrese Telefono a buscar: \n");
+		    		scanf ("%d",&busqxtel);
+		    	}while(!busqxtel,getchar()!='\n');
+		    	
+				for(i=0;i<cant;i++){
+					if(strcmp(busqxtel,contactos[i].telefono) == 0){
+						printf("\nContacto nº %d: \n",i+1);
+						printf("****************************\n");
+						printf( "Apellido: %s", contactos[i].apellido);
+   						printf( "Nombre: %s", contactos[i].nombre);
+   						printf( "Direccion: %s", contactos[i].direccion);
+   						printf( "Telefono: %d\n", *contactos[i].telefono);
+   						printf( "Celular: %d\n", *contactos[i].celular);
+					} 
+				}		
+				
 				break;
 				
 				case 5:
-				printf("Ingrese Celular a buscar: \n");
-				fgets(busqxnombre,50,stdin);
+				do{
+					printf("\nIngrese Celular a buscar: \n");
+		    		scanf ("%d",busqxcel);
+		    	}while(!busqxcel,getchar()!='\n');
+				
+				for(i=0;i<cant;i++){
+					if(strcmp(busqxcel,contactos[i].celular) == 0){
+						printf("\nContacto nº %d: \n",i+1);
+						printf("****************************\n");
+						printf( "Apellido: %s", contactos[i].apellido);
+   						printf( "Nombre: %s", contactos[i].nombre);
+   						printf( "Direccion: %s", contactos[i].direccion);
+   						printf( "Telefono: %d\n", *contactos[i].telefono);
+   						printf( "Celular: %d\n", *contactos[i].celular);
+					} 
+				}		
+				
 				break;
+				
+				default: break;
 			
 			}
 		
-		printf("\nUsted eligio la opcion: %d\n",resp1);
 		break;
 		
-		default:
-		printf("jojo");
-		break;
+		
+		default:break;
 
 	}
+	}while(resp!=4);
+	printf("\n Muchas gracias, Hasta Pronto");
 	
 }
 
