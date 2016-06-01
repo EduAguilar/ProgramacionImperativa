@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-//Estructura 
+
 struct Contacto {
    char     apellido[50];
    char     nombre[50]; 
@@ -25,11 +25,10 @@ int main(){
 
     
 	struct Contacto contactos[50];
+
 	
 	
-	//Menu de Opciones
 	do{
-		
 	
 	do{
 		
@@ -55,7 +54,7 @@ int main(){
 	
 		for(i=0;i<cant;i++){
 			printf("\nIngrese Apellido: ");
-			fgets(contactos[i].apellido, 50, stdin);// se usa para cargar string con espacios asigna nombre de la variable, longitaud  y forma de ingreso
+			fgets(contactos[i].apellido, 50, stdin);
 		
 			printf("\nIngrese Nombre: ");
 			fgets(contactos[i].nombre, 50, stdin);
@@ -108,6 +107,7 @@ int main(){
 				fgets(busqxapell,50,stdin);
 				
 				for(i=0;i<cant;i++){
+
 					if(strcmp(busqxapell,contactos[i].apellido) == 0){
 						printf("\nContacto nº %d: \n",i+1);
 						printf("****************************\n");
@@ -124,7 +124,7 @@ int main(){
 				case 2:
 				printf("Ingrese Nombre a buscar: \n");
 				fgets(busqxnombre,50,stdin);
-			
+
 				for(i=0;i<cant;i++){
 					if(strcmp(busqxnombre,contactos[i].nombre) == 0){
 						printf("\nContacto nº %d: \n",i+1);
@@ -136,7 +136,7 @@ int main(){
    						printf( "Celular: %d\n", *contactos[i].celular);
 					} 
 				}
-				
+
 				break;
 				
 				case 3:
@@ -198,26 +198,14 @@ int main(){
 				break;
 				
 				default: break;
-			
 			}
 		
 		break;
-		
 		
 		default:break;
 
 	}
 	}while(resp!=4);
 	printf("\n Muchas gracias, Hasta Pronto");
-	
-}
 
-/*
-void printContacto( struct Contacto contactos[i] ){
-	
-   printf( "Apellido: %s\n", contactos[i].apellido);
-   printf( "Autor del Libro : %s\n", contactos[i].nombre);
-   printf( "Asunto del Libro: %s\n", contactos[i].direccion);
-   printf( "ID del libro: %d\n", contactos[i].telefono);
-   printf( "ID del libro: %d\n", contactos[i].celular);
-}*/
+}
