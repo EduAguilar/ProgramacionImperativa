@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 struct Contacto {
    char     apellido[50];
    char     nombre[50]; 
@@ -10,7 +9,6 @@ struct Contacto {
    int      telefono[50];
    int      celular[50];
 };
-
 
 
 int main(){
@@ -22,14 +20,11 @@ int main(){
     char	busqxapell[50],busqxnombre[50],busqxdirec[100];
     int		busqxtel[50],busqxcel[50];
     
-
     
 	struct Contacto contactos[50];
 
 	
-	
 	do{
-	
 	do{
 		
 		printf("\t\tAgenda de contactos V_1.2\n");
@@ -41,8 +36,6 @@ int main(){
 	switch(resp){
 		
 		case 1:
-		
-			//Carga Contactos
 		do{
 			system("clear");
 			printf("\n¿Cuantos contactos desea agregar?\nPor favor ingrese cantidad: ");
@@ -76,8 +69,7 @@ int main(){
 		}
 		
 		break;
-		
-		
+	
 		case 2:
 			system("clear");
 			printf("Sus contactos que cargo son los siguientes: \n");
@@ -207,5 +199,4 @@ int main(){
 	}
 	}while(resp!=4);
 	printf("\n Muchas gracias, Hasta Pronto");
-
 }
