@@ -1,4 +1,7 @@
-/*Examen de Programación Imperativa 1 de Julio 2016 
+/*
+                Examen de Programación Imperativa 1 de Julio 2016 
+                
+Realizar los siguientes puntos de forma iterativa incremental, comitiando en cada caso.
 
 1)
 a- Implementar una estructura de datos Libros
@@ -16,7 +19,8 @@ b- Mostrar Menú de opciones
 
 c- Implementar funciones para la la salida en pantalla
 
-*/	
+2) Usar archivo de texto como base de datos.
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -36,11 +40,13 @@ struct Libro Libros[50];
 //Declaracion de Funciones
 void IngresoDeLibros(int cant);
 void ListarLibros(int i);
+void GuardarEnBD(int cant);
 
 //Declaración de variables
-char 	resp;
+char 	resp,resp2;
 int		i,cant=0;
 
+FILE *archivo;
 
 int main(){
 
@@ -63,7 +69,24 @@ int main(){
 			scanf("%d",&cant);
 		}while(!cant,getchar()!='\n');
 		
-		IngresoDeLibros(cant);
+		do{
+			system("clear");
+			IngresoDeLibros(cant);
+			do{
+				printf("\nUsted ha ingresado los siguientes Libros: \n");
+				for(i=0;i<cant;i++){
+					ListarLibros(i);
+				};
+			printf("\n\nCompruebe si sus datos son correctos. \n - Presione (S) si desea guardar los datos o (N) si quiere corregir los datos antes de guardarlos\n");
+			scanf("%c",&resp2);
+			}while(!resp2,getchar()!='\n');
+		}while(resp2!='s'&& resp2!='S');
+		
+		archivo=fopen("BD_Libros.txt","a+r+");
+		GuardarEnBD(cant);
+		fclose(archivo);
+		
+		
 		break;
 	
 		case '2':
@@ -87,7 +110,7 @@ int main(){
 
 void IngresoDeLibros (int cant){//Para cargar libros nuevos
 
-	printf("Por favor cargue sus Libros:... \n");
+	printf("\nPor favor cargue sus Libros:... \n");
 	
 	for(i=0;i<cant;i++){
 		do{
@@ -113,4 +136,14 @@ void ListarLibros(int i){//Para Imprimir por pantalla
 	printf( "\nNombre: %s", Libros[i].nombre);
 	printf( "Autor: %s", Libros[i].autor);
 	printf( "Categoria: %s", Libros[i].categoria);
+}
+
+void GuardarEnBD(int cant){
+	for(i=0;i<cant;i++){
+		fprintf( archivo,"****************************\n");
+		fprintf( archivo,"ID Libro: %d\n", *Libros[i].ID);
+		fprintf( archivo,"\nNombre: %s\n", Libros[i].nombre);
+		fprintf( archivo,"Autor: %s\n", Libros[i].autor);
+		fprintf( archivo,"Categoria: %s\n", Libros[i].categoria);
+	}
 }
