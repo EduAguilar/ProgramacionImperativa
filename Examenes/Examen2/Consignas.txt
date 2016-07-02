@@ -1,0 +1,28 @@
+
+                Examen de Programación Imperativa 1 de Julio 2016 
+                
+Realizar los siguientes puntos de forma iterativa incremental, comitiando en cada caso.
+
+1)
+a- Implementar una estructura de datos Libros
+
+ 	ID
+	Nombre
+	Autor
+	Categoria
+	
+b- Mostrar Menú de opciones 
+
+	1- Ingresar nuevo libro
+	2- Listar Libros
+	X- Salir
+
+c- Implementar funciones para la la salida en pantalla
+
+2) Usar archivo de texto como base de datos.
+
+3)Agregar las opciones
+
+	3-Editar Registros(Libro)
+	4-Eliminar Registros
+	
