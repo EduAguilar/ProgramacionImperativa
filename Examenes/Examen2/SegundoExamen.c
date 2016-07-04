@@ -49,6 +49,7 @@ void PrintLibros();
 void ListarLibros();
 void GuardarEnBD();
 void EditarRegistro();
+void EliminarRegistros();
 
 //Declaración de variables
 char 	resp,resp2;
@@ -97,8 +98,8 @@ int main(){
   		break;
   		
   		case '4':
+  		EliminarRegistros();
   		system("clear");
-  		
   		break;
 
 		default:break;
@@ -226,3 +227,41 @@ void EditarRegistro(){//Para Editar registros
 		
 	fclose(archivo);
 }
+
+void EliminarRegistros(){
+	char ValorBuscado[10];
+	char resp4;
+	int tam;
+	system("clear");
+	tam=sizeof(Libros);//verifica el tamaño de la estructura y se la asigna a la variable
+	archivo = fopen("BD_Libros.txt", "rb+");
+		printf("Ingrese el id del libro a borrar: ");
+		fgets(ValorBuscado,10,stdin);// se carga el conjunto de datos a buscar en la estructura, pueden ser varios 
+		system("clear");
+		
+		while(!feof(archivo)){
+			fread(&Libros,sizeof(Libros),1,archivo);// lee la estructura del archivo 
+			 if (strcmp(ValorBuscado,Libros.ID)==0){
+				printf("\nEl registro que usted desea borrar es el siguiente:\n");
+				printf("\n*******************************\n");
+				printf("1)- ID: %s",Libros.ID);
+				printf("2)- NOMBRE: %s",Libros.nombre);
+				printf("3)- AUTOR: %s",Libros.autor);
+				printf("4)- CATEGORIA: %s",Libros.categoria);
+				printf("\n Por favor asegurese que son los datos que desea borrar\n");
+				printf("\n Si esta seguro de borrarlos presione S(Minuscula) \nDe lo contrario presione cualquier tecla para volver al menú anterior \n");
+				printf("*******************************\n");
+				resp4=getchar();
+				getchar();
+				if (resp4=='s'){
+					strcpy(Libros.ID," ");
+					strcpy(Libros.nombre," ");
+					strcpy(Libros.autor," ");
+					strcpy(Libros.categoria," ");
+					fseek(archivo,-tam, SEEK_CUR);
+					fwrite(&Libros,sizeof(Libros),1,archivo);
+				}
+			}
+		}
+	fclose(archivo);
+}		
