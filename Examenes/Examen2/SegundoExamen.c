@@ -158,21 +158,21 @@ void GuardarEnBD(){//Para guardar en la Base de datos
 	fclose(archivo);
 }
 
-void EditarRegistro(){
-	char id[10];
+void EditarRegistro(){//Para Editar registros
+	char ValorBuscado[10];
 	char resp3;
-	int tama;
+	int tam;
 	system("clear");
-	tama=sizeof(Libros);//verifica el tamaño de la estructura y se la asigna a la variable
+	tam=sizeof(Libros);//verifica el tamaño de la estructura y se la asigna a la variable
 	archivo = fopen("BD_Libros.txt", "rb+");
 		printf("Ingrese el id del libro a editar: ");
-		fgets(id,10,stdin);// se carga el conjunto de datos a buscar en la estructura, pueden ser varios 
-		//getchar();
+		fgets(ValorBuscado,10,stdin);// se carga el conjunto de datos a buscar en la estructura, pueden ser varios 
+		
 		system("clear");
 	
 		while(!feof(archivo)){
 			fread(&Libros,sizeof(Libros),1,archivo);// lee la estructura del archivo 
-			 if (strcmp(id,Libros.ID)==0){
+			 if (strcmp(ValorBuscado,Libros.ID)==0){
 			
 			printf("\nEl registro que usted desea modificar es el siguiente:\n");
 			printf("\n*******************************\n");
@@ -187,12 +187,10 @@ void EditarRegistro(){
 				while(resp3!='s'){
 					printf("Por favor seleccione la opcion de la cual desea modificar su valor:");
 					resp3=getchar();
-					//getchar();
-					//resp3=toupper(getchar());
+					//resp3=toupper(getchar());//Comando para pasar letra a mayuscula.
 					getchar();
 					
-					
-					switch (resp3){
+					switch (resp3){//switch para dar opcion de la categoria a modificar
 						case '1':
 						printf("Ingrese el nuevo ID: ");
 						fgets(Libros.ID,10,stdin);
@@ -205,15 +203,14 @@ void EditarRegistro(){
 						printf("Ingrese el nuevo AUTOR: ");
 						fgets(Libros.autor,50,stdin);
 						break;
-						
 						case '4':
 						printf("Ingrese la nueva CATEGORIA: ");
 						fgets(Libros.categoria,50,stdin);
 						break;
 						
 						case 's':
-						fseek(archivo,-tama, SEEK_CUR);
-						fwrite(&Libros,sizeof(Libros),1,archivo);
+						fseek(archivo,-tam, SEEK_CUR);//Establece la posicion a modificar
+						fwrite(&Libros,sizeof(Libros),1,archivo);//sobreescribe los nuevos datos en la estructura.
 						system("clear");
 						break;
 						
@@ -227,80 +224,5 @@ void EditarRegistro(){
 			
 		}
 		
-		fclose(archivo);
-	}
-
-/*
-void EditarRegistro(){
-	
-	char ValorBuscado[50];//Variable donde se almacenara temporalmente el valor buscado a editar
-	char resp3;
-	int tam;//Variable que se utilizará para guardar el tamaño de la estructura
-	
-	tam=sizeof(Libros);//Se asigna el tamaño de la estructura a la variable
-	
-	archivo = fopen("BD_Libros.txt","a+rb+");
-	printf("Usted procederá a modificar el registro de un libro...\n");
-	printf("\nPor favor ingrese el ID del libro a editar: ");
-	fgets(ValorBuscado,50,stdin);
-	
-	system("clear");
-	
-	while(!feof(archivo)){
-		fread(&Libros,sizeof(Libros),1,archivo);// lee la estructura del archivo
-		
-		if (strcmp(ValorBuscado,Libros.ID)==0){//Se compara la Variable a buscar con los nombres de los libros 
-											   //almacenados en la Base de Datos, si este coincide entonces procede y muestra un menú
-			printf("\nEl registro que usted desea modificar es el siguiente:\n");
-			printf("\n*******************************\n");
-			printf("1)- ID: %s",Libros.ID);
-			printf("2)- NOMBRE: %s",Libros.nombre);
-			printf("3)- AUTOR: %s",Libros.autor);
-			printf("4)- CATEGORIA: %s",Libros.categoria);
-			printf("X)- X Para salir de la edición \n");
-			printf("*******************************\n");
-		
-			while(resp3!='X'&&resp3!='x'){
-			printf("\nPor favor seleccione la opcion de la cual desea modificar su valor:");
-			scanf("%s",&resp3);
-			getchar();
-			
-			switch (resp3){
-				case '1':
-				printf("\nIngrese el nuevo ID: ");
-				fgets(Libros.ID,50, stdin);
-				break;
-				
-				case '2':
-				printf("Ingrese el nuevo NOMBRE: ");
-				fgets(Libros.nombre,50,stdin);
-				break;
-				
-				case '3':
-				printf("Ingrese el nuevo AUTOR: ");
-				fgets(Libros.autor,50,stdin);
-				break;
-				
-				case '4':
-				printf("Ingrese la nueva CATEGORIA: ");
-				fgets(Libros.categoria,50,stdin);
-				break;
-				
-				case 'X':
-				fseek(archivo,-tam, SEEK_CUR);
-				fwrite(&Libros,sizeof(Libros),1,archivo);
-				system("clear");
-				break;
-				default:
-				break;
-				}
-			}
-	
-		}
-		
-		//if (strcmp(ValorBuscado,Libros.nombre)==1){
-		//	printf("\nEl libro que usted busca editar no se encuentra registrado en la base de datos, o ha ingresado un nombre incorrecto\n");
-		//}
-	}
 	fclose(archivo);
-}*/
+}
